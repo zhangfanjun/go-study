@@ -26,3 +26,13 @@ func BenchmarkMy(b *testing.B) {
 		myTest(11, 22)
 	}
 }
+
+func TestFunction(t *testing.T) {
+	SyncMapTest()
+	ManyForAndGoTo()
+	ParamFunc()
+	ServiceImplTest()
+	ClosureTest()
+	ArgsTest()
+	SubTimeTest()
+}
