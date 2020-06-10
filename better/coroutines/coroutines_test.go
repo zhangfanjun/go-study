@@ -6,6 +6,7 @@ func TestCoroutine(t *testing.T) {
 	//线程安全，同步锁
 	//GoSyncLock()
 	//线程的阻塞
-	GoSyncWait()
-
+	//GoSyncWait()
+	//协程安全的做加法
+	GoSyncAtomic()
 }
