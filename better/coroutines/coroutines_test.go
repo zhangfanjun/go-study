@@ -9,6 +9,8 @@ func TestCoroutine(t *testing.T) {
 	//GoSyncWait()
 	//协程安全的做加法
 	//GoSyncAtomic()
-	//通道的同步并发设计
-	GoChannelWait()
+	//通道的并发同步设计
+	//GoChannelWait()
+	//遍历通道
+	GoChannelRange()
 }

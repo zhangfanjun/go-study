@@ -1,6 +1,9 @@
 package coroutines
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 /**
 * 使用通道做并发
@@ -17,4 +20,27 @@ func GoChannelWait() {
 	fmt.Println("开启了go之后，开始消费通道，等待通道生产数据")
 	<-ch
 	fmt.Println("消费成功")
+}
+
+/**
+* 遍历消费通道
+* 注意，遍历的时候，属于无线等待，所以会导致通道阻塞，需要跳出for循环
+ */
+func GoChannelRange() {
+	var ch = make(chan string)
+	go func() {
+		for i := 0; i < 5; i++ {
+			ch <- strconv.Itoa(i)
+		}
+	}()
+	go func() {
+		ch <- "ok"
+	}()
+	for data := range ch {
+		fmt.Println("data:", data)
+		if "ok" == data {
+			fmt.Println("消费到ok")
+			break
+		}
+	}
 }
