@@ -8,5 +8,7 @@ func TestCoroutine(t *testing.T) {
 	//线程的阻塞
 	//GoSyncWait()
 	//协程安全的做加法
-	GoSyncAtomic()
+	//GoSyncAtomic()
+	//通道的同步并发设计
+	GoChannelWait()
 }
