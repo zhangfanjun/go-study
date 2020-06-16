@@ -12,5 +12,7 @@ func TestCoroutine(t *testing.T) {
 	//通道的并发同步设计
 	//GoChannelWait()
 	//遍历通道
-	GoChannelRange()
+	//GoChannelRange()
+	//生产者和消费者
+	Factory()
 }

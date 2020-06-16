@@ -3,6 +3,7 @@ package coroutines
 import (
 	"fmt"
 	"strconv"
+	"time"
 )
 
 /**
@@ -41,6 +42,44 @@ func GoChannelRange() {
 		if "ok" == data {
 			fmt.Println("消费到ok")
 			break
+		}
+	}
+}
+
+/**
+* 利用无缓存通道两端相互等待的特性，实现生产者和消费者
+ */
+func Factory() {
+	ch := make(chan int)
+	go producer(ch)
+	go consumer(ch)
+}
+func producer(c chan int) {
+	fmt.Println("生产")
+	fmt.Println("产出")
+	c <- 1
+	for {
+		time.Sleep(5 * time.Second)
+		data := <-c
+		if data == 0 {
+			fmt.Println("生产")
+			fmt.Println("产出")
+			c <- 1
+		} else {
+			c <- data
+		}
+	}
+
+}
+func consumer(c chan int) {
+	for {
+		time.Sleep(3 * time.Second)
+		data := <-c
+		if data == 1 {
+			fmt.Println("消费")
+			c <- 0
+		} else {
+			c <- data
 		}
 	}
 }
